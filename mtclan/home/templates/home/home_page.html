@@ -4,18 +4,50 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block extra_css %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/litera/bulmaswatch.min.css">
 {% endblock extra_css %}
 
 {% block content %}
-
-{% comment %}
-Delete the line below if you're just getting started and want to remove the welcome screen!
-{% endcomment %}
-{% include 'home/welcome_page.html' %}
+<section class="hero is-fullheight">
+<div class="hero-head">
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+                <a class="navbar-item is-active">
+                    Home
+                </a>
+                <a class="navbar-item" href="/blogs">
+                    Blog
+                </a>
+                <a class="navbar-item">
+                    Software
+                </a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="hero-body">
+    <div class="container has-text-centered">
+        <h1 class="title is-size-1">MTCLAN</h1>
+        <h1 class="subtitle is-size-3">The Community of Learning and Networking for MT</h1>
+        <h1 class="subtitle">
+            <p>
+                ยินดีต้อนรับเข้าสู่เว็บเพื่อการเรียนรู้ แบ่งปันทางด้าน IT และการวิเคราะห์ข้อมูลสำหรับนักเทคนิคการแพทย์และผู้ที่สนใจ
+            </p>
+        </h1>
+    </div>
+</div>
+</section>
 
 {% endblock content %}
