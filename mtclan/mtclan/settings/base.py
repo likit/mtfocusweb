@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -91,8 +92,12 @@ WSGI_APPLICATION = 'mtclan.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mtclan',
+        'USER': 'postgres',
+        'HOST': 'pg',
+        'PORT': '5432',
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
     }
 }
 
@@ -160,4 +165,4 @@ WAGTAIL_SITE_NAME = "mtclan"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://mtclan.net'
