@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/litera/bulmaswatch.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+{% endblock extra_css %}
+
+{% block content %}
+<section>
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+                <a class="navbar-item">
+                    Home
+                </a>
+                <a class="navbar-item is-active" href="/blogs">
+                    Blog
+                </a>
+                <a class="navbar-item">
+                    Software
+                </a>
+                </div>
+            </div>
+        </div>
+    </header>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-thirds is-offset-2">
+                <h1 class="title is-size-2 has-text-centered">{{ page.title }}</h1>
+                <p class="subtitle is-size-4 has-text-centered">{{ page.date }}</p>
+
+                <div class="notification is-light is-italic has-text-weight-light is-size-5">
+                    <span class="icon is-large">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                    </span>
+                    {{ page.intro }}
+                </div>
+                <br>
+                <div class="is-size-4">
+                    {{ page.body|richtext }}
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-two-thirds is-offset-2">
+                <p class="has-text-right"><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
