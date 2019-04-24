@@ -7,11 +7,13 @@ services:
       - mtclan:/var/lib/postgresql/data/
     ports:
       - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD
   web:
     build: .
-    command: python mtclan/manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     environment:
-      - EMAIL_PASSWORD=$EMAIL_PASSWORD
+      - POSTGRES_PASSWORD
     volumes:
       - ./mtclan:/mtclan
     ports:
