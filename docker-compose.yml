@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  pg:
+    image: postgres:11
+    volumes:
+      - mtclan:/var/lib/postgresql/data/
+    ports:
+      - "5433:5432"
+  web:
+    build: .
+    command: python mtclan/manage.py runserver 0.0.0.0:8000
+    environment:
+      - EMAIL_PASSWORD=$EMAIL_PASSWORD
+    volumes:
+      - ./mtclan:/mtclan
+    ports:
+      - "8000:8000"
+      - "80:8000"
+    depends_on:
+      - pg
+
+volumes:
+  mtclan:
+    external: true
