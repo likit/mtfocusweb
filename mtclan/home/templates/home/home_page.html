@@ -3,10 +3,6 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/litera/bulmaswatch.min.css">
-{% endblock extra_css %}
-
 {% block content %}
 <section class="hero is-fullheight">
 <div class="hero-head">
@@ -39,6 +35,7 @@
 </div>
 <div class="hero-body">
     <div class="container has-text-centered">
+        <img src="{% static 'img/brain.png' %}" width="300px"/>
         <h1 class="title is-size-1">MTCLAN</h1>
         <h1 class="subtitle is-size-3">The Community of Learning and Networking for MT</h1>
         <h1 class="subtitle">
@@ -51,3 +48,19 @@
 </section>
 
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+    
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+    
+        });
+    });
+</script>
+{% endblock extra_js %}

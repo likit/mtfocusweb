@@ -4,10 +4,6 @@
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/litera/bulmaswatch.min.css">
-{% endblock extra_css %}
-
 {% block content %}
 <section>
     <header class="navbar">
@@ -23,10 +19,10 @@
             </div>
             <div id="navbarMenuHeroC" class="navbar-menu">
                 <div class="navbar-end">
-                <a class="navbar-item is-active">
+                <a class="navbar-item" href="/">
                     Home
                 </a>
-                <a class="navbar-item" href="/blogs">
+                <a class="navbar-item is-active" href="/blogs">
                     Blog
                 </a>
                 <a class="navbar-item">
@@ -41,9 +37,9 @@
     <div class="container">
         <div class="columns">
             <div class="column is-two-thirds is-offset-2">
-                <h1 class="title is-size-1">{{ page.title }}</h1>
+                <h1 class="title is-size-1 has-text-centered">{{ page.title }}</h1>
 
-                <div class="subtitle is-size-3 has-text-weight-light">{{ page.intro|richtext }}</div>
+                <div class="subtitle is-size-3 has-text-weight-light has-text-centered">{{ page.intro|richtext }}</div>
                 <br>
 
                 {% for post in page.get_children %}
@@ -65,6 +61,7 @@
                     <p class="subtitle is-size-4 has-text-weight-light">{{ post.specific.intro }}</p>
                     <div class="is-size-5">
                     {{ post.specific.body|richtext|truncatewords_html:100 }}
+                    <a href="{% pageurl post  %}">อ่านต่อ</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -74,3 +71,19 @@
 </section>
 
 {% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+    
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+    
+        });
+    });
+</script>
+{% endblock extra_js %}
