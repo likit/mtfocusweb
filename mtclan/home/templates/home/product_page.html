@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+<section class="hero is-fullheight">
+<div class="hero-head">
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroC">
+                <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenuHeroC" class="navbar-menu">
+                <div class="navbar-end">
+                <a class="navbar-item is-active">
+                    Home
+                </a>
+                <a class="navbar-item" href="/blogs">
+                    Blog
+                </a>
+                <a class="navbar-item">
+                    Software
+                </a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="hero-body">
+    <div class="container">
+        <article>
+            {% for block in page.body %}
+            <div class="box">
+                {% include_block block %}
+            </div>
+            {% endfor %}
+        </article>
+    </div>
+</div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function() {
+    
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
+    
+        });
+    });
+</script>
+{% endblock extra_js %}
